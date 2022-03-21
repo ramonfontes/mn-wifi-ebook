@@ -2006,4 +2006,74 @@ As you can see, the throughput has indeed dropped a lot - to around 50 Mbits/s.
 - Zhao, Qi et al. _Software Defined Multi-Path TCP Solution for Mobile Wireless Tactical Networks_. In: MILCOM. IEEE. 2018.
 
 
+## Extras
 
+This section covers topics that are not originally present in the Mininet-WiFi book and may not necessarily have use cases related to wireless networks.
+
+### GRE Tunnel
+
+Requirements: _bridge-utils_
+
+GRE tunnels are IP-over-IP tunnels which can encapsulate IPv4/IPv6 and unicast/multicast traffic. It is a tunneling protocol designed to initiate point-to-point connections capable of carrying any OSI Layer 3 protocol over an IP network. As it is a tunnel protocol, it can be deployed to connect different subnets or provide workarounds for networks with limited hops. Originally defined by Cisco, we can verify the operation of this protocol using Linux systems and consequently Mininet-WiFi.
+
+We will run GRE Tunneling through <_extras/gre.py_> that will produce the network setup depicted just below:
+
+
+```
+               140.116.172.1                     140.116.172.2           
+              h9 (h9-eth0) ----------------------- (h10-eth0) h10
+              |   192.168.10.253--(tunnel)--192.168.20.253     |
+          (h9-eth1)                                        (h10-eth1)   
+        192.168.10.254                                   192.168.20.254 
+              |                                                |
+              |                                                |
+            (eth3)                                          (eth3)    
+              h1                                              h5
+     (eth0) (eth1) (eth2)                            (eth0) (eth1) (eth2)
+       |      |      |                                 |       |      | 
+      h2      h3     h4                                h6      h7     h8 
+```
+
+<img src="figures/info.png" alt="info" width="50"/> 
+
+- **h9** and **h10** are routers (gateways)
+- **h1** and **h5** are switches
+- the rest are simple hosts
+
+You can run <_gre.py_> with:
+
+```
+    ~/mininet-wifi$ sudo python mn-wifi-book-en/codes/extras/gre.py
+```
+
+Then, you can try communicate **h1** and **h2** as follows:   
+
+```
+mininet-wifi> h2 ping -c2 h3
+```
+
+as well as **h2** and **h8**:  
+
+```
+mininet-wifi> h2 ping -c2 h8
+```
+
+
+<img src="figures/question.png" alt="question" width="50"/>
+
+- What is the routing table of **h2** and **h8**? Use the appropriated network commands and provide the outcome.
+- Through the analysis of the packets that cross **h9** and **h10**, how many IP headers can you observe from each packet? Please explaing your answer based on how the GRE tunnel works.
+
+
+### 6in4
+
+Requirements: _script(s) only_
+
+6in4 is a transparent mechanism that transmits IPv6 traffic on existing IPv4 networks. To do this, 6in4 does these functions:
+
+- Encapsulates IPv6 packets in IPv4 packets for transmission on the IPv4 network.
+- Routes traffic between 6in4 and "native" IPv6 networks.
+
+We will run 6in4 through <_extras/6in4.py_> that will produce the network setup depicted just below:
+
+details soon (contrituions are most than welcome!)
