@@ -58,6 +58,9 @@
   - [Firewall](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/intermediate.md#firewall)
   - [Quality of Service (QoS)](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/intermediate.md#quality-of-service-qos)
   - [MultiPath TCP (MP-TCP)](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/intermediate.md#multipath-tcp-mp-tcp)
+- [Extras](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/intermediate.md#extras)
+  - [GRE Tunnel](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/intermediate.md#gre-tunnel)
+  - [6in4](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/intermediate.md#6in4)
 
 [**Expert**](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md)
 - [Manipulating kernel modules](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#manipulating-kernel-modules)
@@ -79,6 +82,7 @@
   - [Forwarding by SSID](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#forwarding-by-ssid)
   - [Security](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#security)
      - [ARP Spoofing](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#arp-spoofing)
+     - [Cracking WEP Keys](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#cracking-wep-keys)
      - [Discovering WPA/WPA2 keys](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#discovering-wpawpa2-keys)
      - [Intrusion Detection System (IDS)](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#intrusion-detection-system-ids) 
      - [Centralized Authentication](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#centralized-authentication)  
