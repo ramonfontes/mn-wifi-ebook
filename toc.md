@@ -84,6 +84,7 @@
      - [ARP Spoofing](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#arp-spoofing)
      - [Cracking WEP Keys](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#cracking-wep-keys)
      - [Discovering WPA/WPA2 keys](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#discovering-wpawpa2-keys)
+     - [The Krack Attack](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#the-krack-attack) 
      - [Intrusion Detection System (IDS)](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#intrusion-detection-system-ids) 
      - [Centralized Authentication](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#centralized-authentication)  
      - [Radius and SDN](https://github.com/ramonfontes/mn-wifi-ebook/blob/main/expert.md#radius-and-sdn)

@@ -364,7 +364,7 @@ As illustrated in the figure below, the topology used in this tutorial consists 
 Before running the tutorial script, let us understand the process we will reproduce. First, **sta1** is associated with **ap1** and moves towards **ap2**. While it is roaming to **ap2**, ICMP packets are being sent to **h2**. Access point **ap1**, in turn, sends its BSSID and the MAC address of all stations associated with it to **h3**, which is the controller. While **sta1** is associated with **ap1**, an instruction in **s3** says that to reach **sta1**, the ICMP reply must be sent through its number three port. However, when **sta1** performs the handover to **ap2**, **s3** should learn about (or be aware of) the handover. The tutorial code will do just that, update the existing table in **s3**. 
 
 
-Let us see this in practice. To do so, you should copy the <_basic.p4_> file to the handover directory, as follows.
+Let us see this in practice. To do so, you should copy the `basic.p4` file to the handover directory, as follows.
 
 ```
     ~/mininet-wifi/tutorials/exercises$ cd handover
@@ -1359,7 +1359,7 @@ This output should show all the access points that the client can ``see''. Based
     sta2# airodump-ng --bssid 02:00:00:00:02:00 mon0 -w sniffer
 ```
 
-This command, in addition to filtering captures using only the BSSID and chosen interfaces as selection criteria, saves all captures in a file called <_sniffer-01.cap_>, which can later be used for analysis.
+This command, in addition to filtering captures using only the BSSID and chosen interfaces as selection criteria, saves all captures in a file called `sniffer-01.cap`, which can later be used for analysis.
 
 Now, we will disconnect **sta1** from access point **ap1**, since **sta2** needs to capture authentication-related traffic information, which will include references to **ap1**'s password. Although we will use the `disconnect` command, it is expected that **sta1** will rejoin **ap1**, since there is a background process running **wpa\_supplicant** that is responsible for negotiation/association between clients and access points.
 
@@ -1367,10 +1367,10 @@ Now, we will disconnect **sta1** from access point **ap1**, since **sta2** needs
     mininet-wifi> sta1 iw dev sta1-wlan0 disconnect
 ```
 
-Finally, let us create a file (e.g. <_password.psk_>) that contains a list of passwords, including the password of the **ap1** access point. The correct password can be found in the script used in this tutorial. In a real situation, the password file should be replaced by a file that can be easily obtained on the Internet. Search for WPA/WPA2 Word List Dictionaries and you will certainly find a couple of references to the password dictionary.
+Finally, let us create a file (e.g. `password.psk`) that contains a list of passwords, including the password of the **ap1** access point. The correct password can be found in the script used in this tutorial. In a real situation, the password file should be replaced by a file that can be easily obtained on the Internet. Search for WPA/WPA2 Word List Dictionaries and you will certainly find a couple of references to the password dictionary.
 
 
-Then we run _aircrack_, so that it can compare the contents of the password file named <_password.psk_> and the traffic data that **sta2** captured when **sta1** joined the **ap1** access point.
+Then we run _aircrack_, so that it can compare the contents of the password file named `password.psk` and the traffic data that **sta2** captured when **sta1** joined the **ap1** access point.
 
 ```
     sta2# aircrack-ng -w password.psk -b 02:00:00:00:02:00 sniffer-01.cap
@@ -1403,12 +1403,12 @@ The key discovery described in the previous section was only possible because _a
 <img src="figures/info.png" alt="info" width="50"/> Handshake is the process by which a client and a server decide how to proceed with a connection, in which one recognizes the other and institutes that they are ready to initiate communication. To ensure the security of this conversation, a key must be installed and used only once.
 
 
-Figure below depicts the four-way handshake of the WPA2 protocol that was captured in the previous tutorial, showing the same content as _sniffer-01.cap_. It is called four-way handshake because it involves the exchange of four messages between the access point and the client.
+Figure below depicts the four-way handshake of the WPA2 protocol that was captured in the previous tutorial, showing the same content as `sniffer-01.cap`. It is called four-way handshake because it involves the exchange of four messages between the access point and the client.
 
 
 ![The four-way handshake](figures/aircrack.png  "The four-way handshake")
 
-#### The ``KRACK attack''
+#### The "KRACK attack"
 
 Requirements: _Ryu_
 
@@ -1418,7 +1418,7 @@ So far, we have used Ryu without making any changes to its source code. What if,
 The program we are going to create is based on the code developed by the author of the [KRACK attack](https://www.krackattacks.com/). This code was adapted to run on Mininet-WiFi and also Ryu. 
 
 
-As we have already cloned the Ryu source code previously, let us work with the script introduced in this tutorial, <_krack-attack.py_>. Please run it as follows.
+As we have already cloned the Ryu source code previously, let us work with the script introduced in this tutorial, `krack-attack.py`. Please run it as follows.
 
 ```
     ~/mininet-wifi$ sudo python mn-wifi-book-en/codes/cap4/krack-attack.py
@@ -1441,10 +1441,10 @@ Then, check **sta1**'s association status.
     	beacon int:	100
 ```
 
-As you can see, **sta1** is associated with access point **ap1**, which has an SSID called ``handover''.
+As you can see, **sta1** is associated with access point **ap1**, which has an SSID called _handover_.
 
 
-Now let us go to the _Ryu_ directory and load it along with the _krack\_code.py_ and _krack\_app.py_ modules, as follows:
+Now let us go to the _Ryu_ directory and load it along with the `krack\_code.py` and `krack\_app.py` modules, as follows:
 
 ```
     ~/mininet-wifi/ryu$ sudo PYTHONPATH=. ./bin/ryu-manager ryu/app/krack_code.py ryu/app/krack_app.py
