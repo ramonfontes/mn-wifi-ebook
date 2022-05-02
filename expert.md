@@ -127,7 +127,7 @@ Now rerun _iw_ to check the signal strength perceived by **sta1**.
 As expected, after changing the formula for calculating the received signal level, the signal value also has changed.
 
 
-Once you understand how the mac80211_hwsim module works, you can make any modifications and extend it as needed. You can also submit improvements to the discussion group about the Linux kernel, more specifically the [group discussing](https://wireless.wiki.kernel.org/ aspects of the IEEE 802.11.
+Once you understand how the mac80211_hwsim module works, you can make any modifications and extend it as needed. You can also submit improvements to the discussion group about the Linux kernel, more specifically the [group discussing](https://wireless.wiki.kernel.org/) aspects of the IEEE 802.11.
 
 
 It is worth mentioning that the mac80211_hwsim module is based on mac80211, a framework used by wireless device driver developers. Therefore, any extensions for mac80211_hwsim must be previously supported by mac80211.
