@@ -1174,9 +1174,7 @@ As expected, we receive _Destination Host Unreachable_ as an answer and 100\% of
 In this section, we will complete security-related tutorials such as WPA/WPA2 key discovery, the _KRACK attack_ case, intrusion detection system use, and centralized authentication using a RADIUS server.
 
 
-img src="figures/alert.png" alt="warning" width="50"/> 
-
-Some of the operations described in this section are illegal and are liable to prosecution. The purpose of this section is to present the actions  just for didactic purpose.
+<img src="figures/alert.png" alt="warning" width="50"/> Some of the operations described in this section are illegal and are liable to prosecution. The purpose of this section is to present the actions  just for didactic purpose.
 
 
 #### ARP Spoofing
