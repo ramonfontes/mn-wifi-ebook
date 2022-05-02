@@ -4,7 +4,7 @@ In this chapter, we will explore the main experiments with wireless networks tha
 
 ## Manipulating kernel modules
 
-In this tutorial, we will understand how operating system modules can be modified and how it is possible to contribute to the development of the Linux kernel. As an example, we will modify the main operating module of Mininet-WiFi, mac80211\_hwsim. This module is included in the source code of the Linux kernel and can be found at [https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.c](https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.c).
+In this tutorial, we will understand how operating system modules can be modified and how it is possible to contribute to the development of the Linux kernel. As an example, we will modify the main operating module of Mininet-WiFi, mac80211_hwsim. This module is included in the source code of the Linux kernel and can be found at [https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.c](https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.c).
 
 
 First of all, we need to create a _Makefile_, which is how the file responsible for setting compilation rules for Linux systems is called. In this tutorial, this file will compile the module to be modified. To generate the _Makefile_, let us first create a new directory named <_myModule_>. If you do not know how to create directories using the CLI, the following command will do so.
@@ -39,7 +39,7 @@ After that, you need to identify the kernel version of the Linux operating syste
     Thu Apr 5 12:19:23 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-According to the output of the command issued above, the kernel version is 4.15. Execute the same command to check your own kernel version. Then visit the [mac80211\_hwsim](https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.c) module web page and select your kernel version from the _branch_ menu. Then copy the contents of the module and save them to a file inside the <_myModule_> directory with the same module name. Repeat the same procedure for [mac80211\_hwsim.h](https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.h).
+According to the output of the command issued above, the kernel version is 4.15. Execute the same command to check your own kernel version. Then visit the [mac80211\_hwsim](https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.c) module web page and select your kernel version from the _branch_ menu. Then copy the contents of the module and save them to a file inside the <_myModule_> directory with the same module name. Repeat the same procedure for [mac80211_hwsim.h](https://github.com/torvalds/linux/blob/master/drivers/net/wireless/mac80211_hwsim.h).
 
 
 Once you have finished all the steps so far, the contents of the <_myModule_> directory will be exactly the same as those shown by the `ls` command.
@@ -49,7 +49,7 @@ Once you have finished all the steps so far, the contents of the <_myModule_> di
     Makefile mac80211_hwsim.c mac80211_hwsim.h
 ```
 
-Now, let us compile the _mac80211\_hwsim_ module. If all goes well, an output similar to the text shown below should appear.
+Now, let us compile the _mac80211_hwsim_ module. If all goes well, an output similar to the text shown below should appear.
 
 ```
     ~/mininet-wifi/myModule$ make
@@ -72,7 +72,7 @@ Then double-check the contents of the <_myModule_> directory. Now, something sim
     mac80211_hwsim.mod.c  Module.symvers
 ```
 
-At this point, you should already have your version of the mac80211\_hwsim module compiled and, in addition to being able to use it, you can also modify and recompile it for later use in Mininet-WiFi. For instance, run <_my-module.py_>. This script includes a call to the new module.
+At this point, you should already have your version of the mac80211_hwsim module compiled and, in addition to being able to use it, you can also modify and recompile it for later use in Mininet-WiFi. For instance, run <_my-module.py_>. This script includes a call to the new module.
 
 ```
     ~/mininet-wifi$ sudo python myModule/my-module.py
@@ -95,10 +95,10 @@ Then observe the signal strength perceived by **sta1**.
     	beacon int:	100
 ```
 
-Without _Wmediumd_, which has been described previously in the book, signal strength is calculated by mac80211\_hwsim through a simple formula, which subtracts 50 from the _txpower_ value, which in this case is 14 dBm, resulting in the value of -36 dBm obtained previously.
+Without _Wmediumd_, which has been described previously in the book, signal strength is calculated by mac80211_hwsim through a simple formula, which subtracts 50 from the _txpower_ value, which in this case is 14 dBm, resulting in the value of -36 dBm obtained previously.
 
 
-So let us modify the module so that it returns another value. For example, if Mininet-WiFi is running, shut it down, look for the text _rx\_status.signal = -50_ in the contents of the _mac80211\_hwsim.c_ file, and replace -50 by -40. Then recompile the module using the _make_ command.
+So let us modify the module so that it returns another value. For example, if Mininet-WiFi is running, shut it down, look for the text _rx_status.signal = -50_ in the contents of the _mac80211_hwsim.c_ file, and replace -50 by -40. Then recompile the module using the _make_ command.
 
 
 Finally, run the <_my-module.py_> script one more time.
@@ -127,10 +127,10 @@ Now rerun _iw_ to check the signal strength perceived by **sta1**.
 As expected, after changing the formula for calculating the received signal level, the signal value also has changed.
 
 
-Once you understand how the mac80211\_hwsim module works, you can make any modifications and extend it as needed. You can also submit improvements to the discussion group about the Linux kernel, more specifically the [group discussing](https://wireless.wiki.kernel.org/ aspects of the IEEE 802.11.
+Once you understand how the mac80211_hwsim module works, you can make any modifications and extend it as needed. You can also submit improvements to the discussion group about the Linux kernel, more specifically the [group discussing](https://wireless.wiki.kernel.org/ aspects of the IEEE 802.11.
 
 
-It is worth mentioning that the mac80211\_hwsim module is based on mac80211, a framework used by wireless device driver developers. Therefore, any extensions for mac80211\_hwsim must be previously supported by mac80211.
+It is worth mentioning that the mac80211_hwsim module is based on mac80211, a framework used by wireless device driver developers. Therefore, any extensions for mac80211_hwsim must be previously supported by mac80211.
 
 ## Traffic monitoring with sFlow-RT
 Requirements: _sFlow-RT_
@@ -876,7 +876,7 @@ Requirements: _Scapy_, _Ryu_
 In the field of wireless networks, one of the concepts that are most commonly asked about is handover, which is a process that is initiated when a mobile moves from its current cell to its neighboring cell, whether it be WiFi, LTE or any other type of wireless technology. There are two types of handover: horizontal handover, which involves cells of the same network technology, and vertical, which happens among different wireless network technologies.
 
 
-In this tutorial, we will simulate a message received by a station as if it were sent by an SDN controller, instructing the station to associate with a certain access point. To do this, we will start _Ryu_ on one terminal, and on the other one we will run <_handover-controller.py_>, which includes instructions on how to execute two scripts related to _Scapy_ (<_sta1\_.py_> and <_sta2\_py_>) that will filter ICMP packets and, more importantly, echo request messages. Due to their importance, we recommend that you read and familiarize yourself with the contents of <_sta1\_.py_> and <_sta2\_py_>.
+In this tutorial, we will simulate a message received by a station as if it were sent by an SDN controller, instructing the station to associate with a certain access point. To do this, we will start _Ryu_ on one terminal, and on the other one we will run <_handover-controller.py_>, which includes instructions on how to execute two scripts related to _Scapy_ (`sta1_.py` and `sta2_py`) that will filter ICMP packets and, more importantly, echo request messages. Due to their importance, we recommend that you read and familiarize yourself with the contents of `sta1\_.py` and `sta2_py`.
 
 ```
     ~/mininet-wifi/ryu$ sudo PYTHONPATH=. ./bin/ryu-manager ryu/app/simple_switch_13.py
@@ -1026,7 +1026,7 @@ Then, run _Wireshark_ on a third terminal and start the capture process using th
 With this information the controller (or any application running on it, in fact), we will be able to take decisions and respond to the node, instructing it to transit to a new access point because of an observed low signal strength or even due to an access point overhead.
 
 
-A good option for instructing stations to transit between access points based on instructions received by controllers is wpa\_cli, which has already been used in the previous tutorial. To run wpa\_cli, something similar to the code snippet below can be used.
+A good option for instructing stations to transit between access points based on instructions received by controllers is `wpa_cli`, which has already been used in the previous tutorial. To run `wpa_cli`, something similar to the code snippet below can be used.
 
 ```
     os.system("~/mininet-wifi/util/m sta1 wpa_cli -i sta1-wlan0 roam 00:00:00:00:00:02")
@@ -1035,7 +1035,7 @@ A good option for instructing stations to transit between access points based on
 Written in _Python_, this code contains a new information, which is the <_util/m_> directory. This directory can be recalled from any terminal and also outside the Mininet-WiFi CLI. Its function is to execute commands from any node running on the Mininet-WiFi topology.
 
 
-The previous command, then, executes wpa\_cli from **sta1** on the **sta1-wlan0** interface and causes this node to associate with another access point that has ``00:00:00:00:00:02'' as its BSSID. This type of association method (with the _roam_ command) is faster than using the disconnect and connect commands.
+The previous command, then, executes `wpa_cli` from **sta1** on the **sta1-wlan0** interface and causes this node to associate with another access point that has ``00:00:00:00:00:02'' as its BSSID. This type of association method (with the _roam_ command) is faster than using the disconnect and connect commands.
 
 
 <img src="figures/info.png" alt="info" width="50"/> Another good alternative that allows you to create (and ``forge'') packets is [libtins](http://libtins.github.io/). It is a software certainly worth learning about: give it a try.
@@ -1442,7 +1442,7 @@ Then, check **sta1**'s association status.
 As you can see, **sta1** is associated with access point **ap1**, which has an SSID called _handover_.
 
 
-Now let us go to the _Ryu_ directory and load it along with the `krack\_code.py` and `krack\_app.py` modules, as follows:
+Now let us go to the _Ryu_ directory and load it along with the `krack_code.py` and `krack_app.py` modules, as follows:
 
 ```
     ~/mininet-wifi/ryu$ sudo PYTHONPATH=. ./bin/ryu-manager ryu/app/krack_code.py ryu/app/krack_app.py
