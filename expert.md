@@ -1408,7 +1408,7 @@ Figure below depicts the four-way handshake of the WPA2 protocol that was captur
 
 #### The "KRACK attack"
 
-Requirements: _Ryu_
+Requirements: _Ryu_, Mininet-WiFi (_krack-attack_ branch in a clean installation)
 
 So far, we have used Ryu without making any changes to its source code. What if, then, we develop a program for Ryu and make it provide some kind of functionality for wireless networks? The tutorial we are going to do now concerns a case that was well-known among the wireless network community in 2017, when a researcher discovered a number of flaws in the WPA2 protocol.
 
